@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # ignore yearly goals lists.
-20[0-9]+.json
+[2][0][0123456789][0123456789].json
