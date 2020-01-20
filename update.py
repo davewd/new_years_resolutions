@@ -117,6 +117,8 @@ for goal in goals:
     
     
     is_percentage_goal = goal.get("is_percentage", False)
+    is_decending_goal = False
+
     if is_percentage_goal :
         achieved_pct = current_quantity/100
         expected_pct = current_days/total_days * (goal_quantity/100)
@@ -124,9 +126,10 @@ for goal in goals:
     elif is_decending_goal:
         achieved_pct = current_quantity/100
     else:
+        expected_pct = current_days/total_days
         expected_amt = expected_pct * goal_quantity
         achieved_pct = current_quantity/goal_quantity
-        expected_pct = current_days/total_days
+
 
     message = f"({goal.get('id')}): {goal.get('goal_title')} [ Expected: {expected_pct *100:.1f}% ({expected_amt:.1f}/{goal_quantity:.1f}) Achieved: {achieved_pct*100:.1f}% ({current_quantity:.1f}/{goal_quantity:.1f}) ]"
     if achieved_pct > expected_pct:
