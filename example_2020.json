@@ -1,0 +1,47 @@
+{
+    "goals": [{
+        "id": "1",
+        "goal_title": "Ascending count",
+        "category": "HEALTH",
+        "total_quantity": 100,
+        "goal_datetime": "2020-12-31T00:00:00.0+00:00"
+    },
+    {
+        "id": "2",
+        "goal_title": "descending count",
+        "category": "HEALTH",
+        "total_quantity": 100,
+        "goal_datetime": "2020-12-31T00:00:00.0+00:00"
+    },
+    {
+        "id": "3",
+        "goal_title": "Example Percentage",
+        "category": "HEALTH",
+        "total_quantity": 100,
+        "goal_datetime": "2020-12-31T00:00:00.0+00:00"
+    },
+    {
+        "id": "4",
+        "goal_title": "Example github comits",
+        "category": "PROFFESIONAL",
+        "total_quantity": 100,
+        "goal_datetime": "2020-12-31T00:00:00.0+00:00"
+    }
+
+    ],
+    "achievements": [{
+            "goal": "2",
+            "datetime": "2020-01-02T00:00:00.0+00:00",
+            "value": 35,
+            "total_time_millis": null,
+            "comments": ""
+        },
+        {
+            "goal": "2",
+            "datetime": "2020-01-05T00:00:00.0+00:00",
+            "value": 20,
+            "total_time_millis": null,
+            "comments": ""
+        }
+    ]
+}
