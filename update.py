@@ -2,6 +2,7 @@ import calendar
 import copy
 import datetime
 import logging
+import math
 import os
 import pprint
 from datetime import date, datetime, timedelta, tzinfo
@@ -10,11 +11,16 @@ import colorama
 import dateutil
 import matplotlib
 matplotlib.use('TkAgg')
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+from pandas.plotting import register_matplotlib_converters
 from python_json_config import ConfigBuilder
+
+
+register_matplotlib_converters()
 
 logger = logging.getLogger(__name__)
 
@@ -127,16 +133,37 @@ for goal in goals:
         achieved_pct = current_quantity/100
     else:
         expected_pct = current_days/total_days
-        expected_amt = expected_pct * goal_quantity
+        expected_amt = math.floor(expected_pct * goal_quantity)
         achieved_pct = current_quantity/goal_quantity
 
 
     message = f"({goal.get('id')}): {goal.get('goal_title')} [ Expected: {expected_pct *100:.1f}% ({expected_amt:.1f}/{goal_quantity:.1f}) Achieved: {achieved_pct*100:.1f}% ({current_quantity:.1f}/{goal_quantity:.1f}) ]"
-    if achieved_pct > expected_pct:
+    if current_quantity >= expected_amt:
         logger.info(message)
     else :
         logger.error(message)
 
+"""     from github import Github
+    import json
+    #with open('../../secrets/github.json') as json_file:
+    #data = json.load(json_file)
+    #token=data['secret']
+    g = Github("davewd","L!ttleDaws0n")
+    user = g.get_user()
+    for repo in user.get_repos():
+        contents = repo.get_views_traffic()
+        print(f"{repo.name} :")
+        branch = repo.get_branch("master")
+        commits = repo.get_commits()
+        for commit in commits:
+            print( f"{commit.commit.last_modified}|{commit.commit.author.name} > {commit.commit.message}\n" )
+        contents = repo.get_contents("")
+        while contents:
+            file_content = contents.pop(0)
+            if file_content.type == "dir":
+                contents.extend(repo.get_contents(file_content.path))
+            else:
+                print(file_content) """
 
 
 # create data
